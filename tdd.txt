@@ -1,0 +1,61 @@
+Ok todo inicia con la historia:
+
+Necesitamos validar cédulas ecuatorianas, tengo un par de funciones de algunos colaboradores, ahora la idea es obtener algo un poco más pythonico y tambien hacer unas pruebas de rigor con una lista de presumiblemente válidas cédulas a ver que pasa. Aprovechamos para crear un test case y así matar dos escopetas con el mismo pájaro.
+
+
+This is a doctest file to test Regex in Python, to test the thing you need to 
+issue this comand:
+
+python -m doctest -v tdd.txt.
+
+
+Ok, we have two functions and we need to see if their output match, given the same input.
+
+>>> from validator import cedula1
+>>> from validator import cedula2
+>>> with open("cedulas.txt") as f:
+...     cedulas = f.readlines()
+...     cedulas = map(str.strip, cedulas)
+>>> for c in cedulas:
+...     assert cedula1(c) == cedula2(c)
+
+Ahora vamos a enviarle una cedula falsa
+
+>>> cedula1("1111111119")
+(14, False)
+
+>>> cedula2("1111111119")
+(14, False)
+
+este es el resultado segun yo:
+
+...
+Trying:
+    for c in cedulas:
+        assert cedula1(c) == cedula2(c)
+Expecting nothing
+ok
+Trying:
+    cedula1("1111111119")
+Expecting:
+    (14, False)
+ok
+Trying:
+    cedula2("1111111119")
+Expecting:
+    (14, False)
+ok
+1 items passed all tests:
+   6 tests in tdd.txt
+6 tests in 1 items.
+6 passed and 0 failed.
+Test passed.
+
+...
+
+
+Ok parece que funciona, lo he probado con una lista de 100 cédulas, esperando a ver si alguien tiene por ahi una lista mas completa de casos. Otra cosa importante sería tener el algoritmo generador, porque todavía no me gusta la suma de dígitos sin mucho lógica, se parece a las S-BOX del algoritmo de DES: http://crypto.stackexchange.com/questions/1297/desirable-s-box-properties
+
+En fin, happy codding, moving to other things.
+
+Pato Valarezo
