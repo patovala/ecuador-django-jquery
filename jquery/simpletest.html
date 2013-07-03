@@ -1,0 +1,20 @@
+<html lang="es">
+<head>
+    <title>ecuador jquery plugin test</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script src="jquery.min.js"></script>
+    <script src="ecuador.jquery.js"></script>
+
+    <script>
+        $(document).ready(function() { 
+            $('#cedula').change(function(){
+                alert($('#cedula').validateEC());
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>Simple test</h1>
+<input type="text" id="cedula" name="cedula"/>
+</body>
+</html>
